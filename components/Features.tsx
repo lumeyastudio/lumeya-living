@@ -4,88 +4,50 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const features = [
-  {
-    icon: "🌱",
-    title: "Expert Plant Guidance",
-    desc: "Get personalised care plans from certified horticulturists. Never lose a plant again.",
-  },
-  {
-    icon: "🪴",
-    title: "Curated Collection",
-    desc: "Every plant passes through quality checks. Healthy, beautiful, and ready for your space.",
-  },
-  {
-    icon: "♻️",
-    title: "Sustainable Living",
-    desc: "Eco-friendly packaging, sustainable sourcing, and a commitment to a greener tomorrow.",
-  },
-  {
-    icon: "🏠",
-    title: "Home Gardening Solutions",
-    desc: "From seed to sanctuary — everything you need for indoor and balcony gardening.",
-  },
-  {
-    icon: "⚡",
-    title: "Fast Delivery",
-    desc: "Same-day and next-day delivery in major cities. Plants arrive safe, fresh, and thriving.",
-  },
-  {
-    icon: "💬",
-    title: "Dedicated Support",
-    desc: "Real experts. Real answers. Chat or call for guidance on any plant concern.",
-  },
+  { icon: "🌱", title: "Expert Plant Guidance", desc: "AI-powered plant identification + certified horticulturists answer every question inside the app." },
+  { icon: "🪴", title: "Curated Collection", desc: "Every plant passes a 7-point quality check. Healthy, beautiful, and thriving — guaranteed." },
+  { icon: "♻️", title: "Sustainable Packaging", desc: "100% biodegradable packaging, eco-friendly logistics, and ethical sourcing from Indian nurseries." },
+  { icon: "🏠", title: "Home Garden Solutions", desc: "Everything for indoor gardens, balcony setups, terrace farms, and kitchen herb gardens." },
+  { icon: "⚡", title: "Fast Delivery", desc: "Same-day delivery in Bangalore, Delhi, Mumbai, Pune, Hyderabad. Next-day in 15+ cities." },
+  { icon: "💬", title: "Dedicated Support", desc: "Real plant experts via chat, call, or video — available 7 days a week inside the Vanaya app." },
+  { icon: "📅", title: "Smart Care Reminders", desc: "Personalised watering, fertilizing, and repotting reminders so your plants always thrive." },
+  { icon: "📸", title: "Plant Diagnosis", desc: "Snap a photo of any sick plant — our AI diagnoses the issue and suggests a fix instantly." },
+  { icon: "🎁", title: "Gift Plants", desc: "Send living gifts with personalised notes. Perfect for birthdays, housewarmings, and more." },
 ];
 
 export default function Features() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="features" ref={ref} className="py-32 bg-[#050505] relative">
-      {/* top divider */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+    <section id="features" ref={ref} className="py-28 bg-white relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-200 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7 }}
-          >
-            <p className="text-xs uppercase tracking-[0.2em] text-green-500/60 font-medium mb-4">Why Lumeya Living</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight">
-              Built for how
-              <br />
-              modern India{" "}
-              <span className="gradient-text">lives.</span>
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6 }}>
+            <p className="text-xs uppercase tracking-[0.2em] text-green-600 font-semibold mb-3">Why Vanaya</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+              Built for how<br />modern India <span className="gradient-text">grows.</span>
             </h2>
           </motion.div>
-          <motion.p
-            initial={{ opacity: 0, x: 20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-white/40 text-lg leading-relaxed"
-          >
-            We built Lumeya Living because urban life deserves more green. Every feature
-            is crafted to make plant parenting effortless, beautiful, and rewarding.
+          <motion.p initial={{ opacity: 0, x: 20 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ delay: 0.1 }} className="text-gray-500 text-lg leading-relaxed">
+            Whether you&apos;re a first-time plant parent or a seasoned gardener, Vanaya gives you the tools, knowledge, and community to succeed.
           </motion.p>
         </div>
 
-        {/* Grid */}
         <div className="grid md:grid-cols-3 gap-4">
           {features.map((f, i) => (
             <motion.div
               key={f.title}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group p-6 rounded-2xl border border-white/5 bg-[#0F1115] hover:border-green-500/15 transition-all duration-300 hover:bg-[#111610]"
+              transition={{ delay: i * 0.07 }}
+              className="group p-5 rounded-2xl border border-gray-100 bg-gray-50 hover:border-green-200 hover:bg-green-50 card-hover"
             >
-              <div className="text-2xl mb-4">{f.icon}</div>
-              <h3 className="text-white font-semibold mb-2 text-[15px] group-hover:text-green-300 transition-colors duration-300">
-                {f.title}
-              </h3>
-              <p className="text-white/40 text-sm leading-relaxed">{f.desc}</p>
+              <div className="text-2xl mb-3">{f.icon}</div>
+              <h3 className="text-[15px] font-bold text-gray-900 mb-1.5 group-hover:text-green-700 transition-colors">{f.title}</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">{f.desc}</p>
             </motion.div>
           ))}
         </div>
