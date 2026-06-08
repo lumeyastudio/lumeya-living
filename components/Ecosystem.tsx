@@ -4,119 +4,47 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const ecosystem = [
-  {
-    icon: "🌿",
-    title: "Plants",
-    desc: "Hundreds of indoor and outdoor plants, from rare tropicals to hardy succulents. Every plant, hand-picked.",
-    tag: "300+ varieties",
-    color: "from-green-900/40 to-transparent",
-    glow: "rgba(74, 222, 128, 0.08)",
-  },
-  {
-    icon: "✂️",
-    title: "Gardening Services",
-    desc: "Expert horticulturists at your doorstep. Pruning, repotting, landscape design, and ongoing maintenance.",
-    tag: "Pan India",
-    color: "from-emerald-900/40 to-transparent",
-    glow: "rgba(16, 185, 129, 0.08)",
-  },
-  {
-    icon: "💧",
-    title: "Plant Care",
-    desc: "Premium fertilizers, soils, pots, and tools. Everything your plants need to thrive, delivered fast.",
-    tag: "500+ products",
-    color: "from-teal-900/40 to-transparent",
-    glow: "rgba(20, 184, 166, 0.08)",
-  },
-  {
-    icon: "🏡",
-    title: "Green Spaces",
-    desc: "End-to-end design for balconies, offices, and homes. Transform any corner into a lush sanctuary.",
-    tag: "Custom design",
-    color: "from-green-900/30 to-transparent",
-    glow: "rgba(74, 222, 128, 0.06)",
-  },
-  {
-    icon: "🧘",
-    title: "Wellness Living",
-    desc: "Air-purifying plants, aromatics, and wellness products designed for mindful modern living.",
-    tag: "Lifestyle",
-    color: "from-lime-900/30 to-transparent",
-    glow: "rgba(163, 230, 53, 0.06)",
-  },
+  { icon: "🌿", title: "Indoor Plants", desc: "Monstera, Pothos, Peace Lily, Snake Plant — curated for Indian homes and light conditions.", tag: "150+ varieties", color: "bg-green-50 border-green-200 hover:bg-green-100" },
+  { icon: "☀️", title: "Outdoor & Garden", desc: "Flowering plants, climbers, hedges, and fruit trees perfect for balconies and gardens.", tag: "100+ varieties", color: "bg-emerald-50 border-emerald-200 hover:bg-emerald-100" },
+  { icon: "✂️", title: "Gardening Services", desc: "Expert horticulturists at your doorstep for pruning, repotting, landscape design, and care.", tag: "Book in 60 sec", color: "bg-teal-50 border-teal-200 hover:bg-teal-100" },
+  { icon: "💧", title: "Plant Care Products", desc: "Premium organic fertilizers, nutrient-rich soils, beautiful pots, and gardening tools.", tag: "500+ products", color: "bg-lime-50 border-lime-200 hover:bg-lime-100" },
+  { icon: "🏡", title: "Green Spaces", desc: "End-to-end design for offices, balconies, terraces, and living rooms. Turn any space lush.", tag: "Custom design", color: "bg-green-50 border-green-200 hover:bg-green-100" },
+  { icon: "🧘", title: "Wellness Living", desc: "Air-purifying plants, aromatics, and stress-busting greens for mindful modern living.", tag: "Lifestyle", color: "bg-emerald-50 border-emerald-200 hover:bg-emerald-100" },
 ];
 
 export default function Ecosystem() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="ecosystem" ref={ref} className="py-32 bg-[#050505] relative overflow-hidden">
-      <div className="absolute inset-0 aurora-bg opacity-60" />
-
+    <section id="ecosystem" ref={ref} className="py-28 bg-[#F7F9F5] relative">
+      <div className="absolute inset-0 grid-pattern" />
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            className="text-xs uppercase tracking-[0.2em] text-green-500/60 font-medium mb-4"
-          >
-            Everything you need
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight"
-          >
-            The Lumeya
-            <br />
-            <span className="gradient-text">Ecosystem</span>
+        <div className="text-center mb-16">
+          <motion.p initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} className="text-xs uppercase tracking-[0.2em] text-green-600 font-semibold mb-3">Everything you need</motion.p>
+          <motion.h2 initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-bold text-gray-900">
+            The Vanaya <span className="gradient-text">Ecosystem</span>
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-5 text-white/40 max-w-md mx-auto text-lg"
-          >
-            One platform for every green need. Seamlessly connected.
+          <motion.p initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ delay: 0.2 }} className="mt-4 text-gray-500 max-w-xl mx-auto text-lg">
+            One platform. Every green need. Beautifully connected.
           </motion.p>
         </div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-5 gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {ecosystem.map((item, i) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative rounded-2xl border border-white/5 bg-[#0F1115] p-6 cursor-pointer overflow-hidden transition-all duration-500 hover:-translate-y-2"
-              style={{
-                boxShadow: `0 0 0 1px rgba(255,255,255,0.03)`,
-              }}
-              whileHover={{
-                boxShadow: `0 0 40px ${item.glow}, 0 0 0 1px rgba(74,222,128,0.1)`,
-              }}
+              transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
+              className={`group rounded-2xl border p-6 card-hover cursor-pointer transition-all duration-300 ${item.color}`}
             >
-              {/* Gradient bg on hover */}
-              <div className={`absolute inset-0 bg-gradient-to-b ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-
-              <div className="relative z-10 flex flex-col gap-4 h-full">
-                <div className="text-3xl">{item.icon}</div>
-                <div>
-                  <h3 className="text-base font-semibold text-white mb-2 group-hover:text-green-300 transition-colors duration-300">
-                    {item.title}
-                  </h3>
-                  <p className="text-[13px] text-white/40 leading-relaxed">{item.desc}</p>
-                </div>
-                <div className="mt-auto">
-                  <span className="text-[11px] px-2.5 py-1 rounded-full border border-green-500/20 text-green-400/70 font-medium">
-                    {item.tag}
-                  </span>
-                </div>
-              </div>
+              <div className="text-4xl mb-4">{item.icon}</div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+              <p className="text-sm text-gray-600 leading-relaxed mb-4">{item.desc}</p>
+              <span className="text-xs px-3 py-1 rounded-full bg-white border border-green-200 text-green-700 font-semibold">
+                {item.tag}
+              </span>
             </motion.div>
           ))}
         </div>

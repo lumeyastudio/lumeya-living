@@ -3,40 +3,50 @@ import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Lumeya Living | Modern Plant & Gardening Ecosystem",
+  title: "Vanaya — Grow With Humility | Plants, Care & Green Living",
   description:
-    "Discover plants, gardening services, plant care, and green living solutions with Lumeya Living — a Lumeya Studios experience.",
+    "Vanaya brings nature to your doorstep. Discover 300+ plants, expert gardening services, smart care reminders, and sustainable green living — all in one app. Available across India.",
   keywords: [
-    "plants",
-    "gardening",
-    "plant care",
+    "buy plants online india",
+    "indoor plants",
+    "plant care app",
+    "gardening services india",
     "green living",
-    "sustainable",
+    "vanaya app",
+    "plant delivery india",
+    "sustainable living",
     "home garden",
-    "India",
+    "plant parent",
   ],
+  authors: [{ name: "Lumeya Studios" }],
+  creator: "Lumeya Studios",
+  publisher: "Lumeya Studios",
+  metadataBase: new URL("https://lumeyaliving.com"),
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Lumeya Living | Modern Plant & Gardening Ecosystem",
+    title: "Vanaya — Grow With Humility | Plants & Green Living",
     description:
-      "Discover plants, gardening services, plant care, and green living solutions with Lumeya Living.",
+      "Discover 300+ plants, expert care, and sustainable green living with Vanaya. Download the app and start your green journey today.",
     url: "https://lumeyaliving.com",
-    siteName: "Lumeya Living",
+    siteName: "Vanaya by Lumeya Studios",
     type: "website",
+    locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lumeya Living | Modern Plant & Gardening Ecosystem",
+    title: "Vanaya — Grow With Humility",
     description:
-      "Discover plants, gardening services, plant care, and green living solutions with Lumeya Living.",
+      "India's most beautiful plant & gardening app. Download Vanaya today.",
+    creator: "@lumeyastudios",
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${GeistSans.variable} font-sans antialiased`}>

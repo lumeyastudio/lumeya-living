@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Leaf } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const links = [
   { label: "Ecosystem", href: "#ecosystem" },
   { label: "Features", href: "#features" },
   { label: "App", href: "#app" },
-  { label: "Story", href: "#story" },
+  { label: "Nature", href: "#nature" },
 ];
 
 export default function Navbar() {
@@ -29,19 +30,25 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "py-3 glass border-b border-white/5"
-            : "py-5 bg-transparent"
+            ? "py-2 bg-white/90 backdrop-blur-xl border-b border-green-100 shadow-sm"
+            : "py-4 bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/20 group-hover:shadow-green-500/40 transition-all duration-300">
-              <Leaf className="w-4 h-4 text-white" />
+            <Image
+              src="/vanaya-logo.png"
+              alt="Vanaya Logo"
+              width={36}
+              height={36}
+              className="rounded-xl"
+            />
+            <div>
+              <span className="text-[16px] font-bold tracking-tight text-gray-900">
+                Vanaya
+              </span>
             </div>
-            <span className="text-[15px] font-semibold tracking-tight text-white">
-              Lumeya <span className="text-green-400">Living</span>
-            </span>
           </a>
 
           {/* Desktop links */}
@@ -50,7 +57,7 @@ export default function Navbar() {
               <a
                 key={l.label}
                 href={l.href}
-                className="text-sm text-white/60 hover:text-white transition-colors duration-200"
+                className="text-sm text-gray-600 hover:text-green-700 transition-colors duration-200 font-medium"
               >
                 {l.label}
               </a>
@@ -60,37 +67,35 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="#download"
-              className="text-sm px-4 py-2 rounded-full border border-white/10 text-white/70 hover:text-white hover:border-white/20 transition-all duration-200"
+              href="#contact"
+              className="text-sm px-4 py-2 rounded-full border border-gray-200 text-gray-600 hover:text-green-700 hover:border-green-300 transition-all duration-200"
             >
-              Sign In
+              Contact Us
             </a>
             <a
               href="#download"
-              className="text-sm px-4 py-2 rounded-full bg-green-500 hover:bg-green-400 text-black font-medium transition-all duration-200 btn-magnetic"
+              className="text-sm px-5 py-2.5 rounded-full bg-green-600 hover:bg-green-700 text-white font-semibold transition-all duration-200 btn-magnetic glow-green-sm"
             >
               Download App
             </a>
           </div>
 
-          {/* Mobile menu button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-white/70 hover:text-white"
+            className="md:hidden text-gray-700"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </motion.nav>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="fixed inset-x-0 top-[60px] z-40 glass border-b border-white/5 px-6 py-6 md:hidden"
+            className="fixed inset-x-0 top-[60px] z-40 bg-white/95 backdrop-blur-xl border-b border-green-100 px-6 py-6 md:hidden shadow-lg"
           >
             <div className="flex flex-col gap-5">
               {links.map((l) => (
@@ -98,7 +103,7 @@ export default function Navbar() {
                   key={l.label}
                   href={l.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-white/70 hover:text-white text-lg font-medium"
+                  className="text-gray-700 hover:text-green-700 text-lg font-medium"
                 >
                   {l.label}
                 </a>
@@ -106,7 +111,7 @@ export default function Navbar() {
               <a
                 href="#download"
                 onClick={() => setMobileOpen(false)}
-                className="mt-2 text-center py-3 rounded-full bg-green-500 text-black font-medium"
+                className="mt-2 text-center py-3 rounded-full bg-green-600 text-white font-semibold"
               >
                 Download App
               </a>

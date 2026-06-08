@@ -1,59 +1,50 @@
-import { Leaf } from "lucide-react";
+import Image from "next/image";
 
 const footerLinks = {
-  Company: ["About", "Blog", "Careers", "Press"],
-  Products: ["Plants", "Services", "Plant Care", "Green Spaces"],
-  Support: ["Help Centre", "Contact Us", "Track Order", "Returns"],
+  Products: ["Indoor Plants", "Outdoor Plants", "Plant Care", "Gardening Services", "Green Spaces"],
+  Company: ["About Vanaya", "Blog", "Careers", "Press", "Sustainability"],
+  Support: ["Help Centre", "Contact Us", "Track Order", "Returns Policy", "Plant Care Guide"],
 };
 
 export default function Footer() {
   return (
-    <footer className="bg-[#050505] border-t border-white/5 pt-20 pb-10">
+    <footer className="bg-gray-900 text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-5 gap-12 mb-16">
+        <div className="grid md:grid-cols-5 gap-12 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/20">
-                <Leaf className="w-4 h-4 text-white" />
-              </div>
-              <span className="text-[15px] font-semibold tracking-tight text-white">
-                Lumeya <span className="text-green-400">Living</span>
-              </span>
+            <div className="flex items-center gap-2.5 mb-4">
+              <Image src="/vanaya-logo.png" alt="Vanaya" width={36} height={36} className="rounded-xl" />
+              <span className="text-lg font-bold text-white">Vanaya</span>
             </div>
-            <p className="text-sm text-white/30 leading-relaxed max-w-xs">
-              Nature. Technology. Lifestyle.
-              <br />
-              A Lumeya Studios experience.
+            <p className="text-sm text-gray-400 leading-relaxed max-w-xs mb-2">
+              Discover plants, expert care, and green living solutions across India.
             </p>
-            <div className="flex gap-4 mt-6">
-              {["𝕏", "📸", "💼", "📘"].map((icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-9 h-9 rounded-xl border border-white/5 bg-white/2 flex items-center justify-center text-sm text-white/40 hover:text-white hover:border-white/15 transition-all duration-200"
+            <p className="text-xs text-gray-500 mb-6">Grow With Humility 🌿</p>
+
+            <div className="flex gap-3">
+              {[
+                { icon: "𝕏", label: "Twitter" },
+                { icon: "📸", label: "Instagram" },
+                { icon: "💼", label: "LinkedIn" },
+                { icon: "▶", label: "YouTube" },
+              ].map((s) => (
+                <a key={s.label} href="#" aria-label={s.label}
+                  className="w-9 h-9 rounded-xl border border-gray-700 bg-gray-800 flex items-center justify-center text-sm text-gray-400 hover:text-green-400 hover:border-green-700 transition-all duration-200"
                 >
-                  {icon}
+                  {s.icon}
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Links */}
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section}>
-              <h4 className="text-xs uppercase tracking-[0.15em] text-white/30 font-medium mb-5">
-                {section}
-              </h4>
-              <ul className="space-y-3">
+              <h4 className="text-xs uppercase tracking-[0.15em] text-gray-500 font-semibold mb-4">{section}</h4>
+              <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link}>
-                    <a
-                      href="#"
-                      className="text-sm text-white/50 hover:text-white transition-colors duration-200"
-                    >
-                      {link}
-                    </a>
+                    <a href="#" className="text-sm text-gray-400 hover:text-green-400 transition-colors duration-200">{link}</a>
                   </li>
                 ))}
               </ul>
@@ -61,21 +52,27 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white/20">
-            © {new Date().getFullYear()} Lumeya Studios. All rights reserved.
+        {/* Bottom */}
+        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-gray-500">
+            © {new Date().getFullYear()} Lumeya Studios Pvt. Ltd. All rights reserved.
           </p>
-          <p className="text-xs text-white/20 font-medium tracking-wide">
-            Lumeya Living™ — Nature. Technology. Lifestyle.
+          <p className="text-xs text-gray-600 font-medium">
+            Vanaya™ — Grow With Humility
           </p>
-          <div className="flex gap-6">
-            {["Privacy", "Terms", "Cookies"].map((l) => (
-              <a key={l} href="#" className="text-xs text-white/20 hover:text-white/50 transition-colors">
-                {l}
-              </a>
+          <div className="flex gap-5">
+            {["Privacy Policy", "Terms of Service", "Cookie Policy"].map((l) => (
+              <a key={l} href="#" className="text-xs text-gray-500 hover:text-gray-300 transition-colors">{l}</a>
             ))}
           </div>
+        </div>
+
+        {/* Lumeya Studios credit */}
+        <div className="text-center mt-6">
+          <p className="text-[11px] text-gray-600">
+            Crafted with 🌿 by{" "}
+            <a href="#" className="text-gray-500 hover:text-green-400 transition-colors">Lumeya Studios</a>
+          </p>
         </div>
       </div>
     </footer>
